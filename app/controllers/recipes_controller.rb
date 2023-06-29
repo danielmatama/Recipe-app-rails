@@ -9,8 +9,7 @@ class RecipesController < ApplicationController
   def show
     recipe_test = Recipe.find(params[:id])
     unless recipe_test.user == current_user || recipe_test.public?
-      flash[:alert] =
-        'You do not have access to see details.'
+      flash[:alert] = 'You do not have access to see details.'
       return redirect_to recipes_path
     end
 
@@ -18,12 +17,10 @@ class RecipesController < ApplicationController
     @recipe_foods = RecipeFood.where(recipe_id: @recipe.id).includes(:food, :recipe)
   end
 
-  # GET /recipes/new
   def new
     @recipe = Recipe.new
   end
 
-  # POST /recipes or /recipes.json
   def create
     @recipe = Recipe.new(recipe_params)
     @recipe.user = current_user
@@ -39,7 +36,6 @@ class RecipesController < ApplicationController
     end
   end
 
-  # DELETE /recipes/1 or /recipes/1.json
   def destroy
     @recipe.destroy
 
@@ -55,17 +51,11 @@ class RecipesController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_recipe
     @recipe = Recipe.find(params[:id])
   end
 
-  # Only allow a list of trusted parameters through.
   def recipe_params
     params.require(:recipe).permit(:name, :description, :user_id, :preparation_time, :cooking_time, :public)
-  end
-
-  def calc_time(time)
-    Time.at(time.to_i * 60).utc.strftime('%H:%M:%S')
   end
 end

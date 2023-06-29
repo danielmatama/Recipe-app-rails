@@ -5,4 +5,6 @@ class Food < ApplicationRecord
 
   validates :name, :measurement_unit, :price, presence: true
   validates :price, numericality: { greater_than: 0 }
+
+  belongs_to :user unless method_defined?(:user)
 end
