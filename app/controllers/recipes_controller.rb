@@ -22,26 +22,24 @@ class RecipesController < ApplicationController
   end
 
   def create
-    @recipe = Recipe.new(recipe_params)
-    @recipe.user = current_user
-
-    respond_to do |format|
-      if @recipe.save
-        format.html { redirect_to recipe_url(@recipe), notice: 'Recipe was successfully created.' }
-        format.json { render :show, status: :created, location: @recipe }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @recipe.errors, status: :unprocessable_entity }
-      end
+    @user = User.find(params[:user_id])
+    @recipe = @user.recipes.new(recipe_params)
+    if @recipe.save
+      redirect_to users_path, notice: 'Recipe created successfully!'
+    else
+      puts @recipe.errors.full_messages
+      render :new
     end
   end
 
   def destroy
-    @recipe.destroy
-
-    respond_to do |format|
-      format.html { redirect_to recipes_path, notice: 'Recipe was successfully destroyed.' }
-      format.json { head :no_content }
+    @user = User.find(params[:user_id])
+    @recipe = Recipe.find(params[:id])
+    if @recipe.destroy
+      redirect_to users_path, notice: 'Recipe created successfully!'
+    else
+      puts @recipe.errors.full_messages
+      render :new
     end
   end
 
