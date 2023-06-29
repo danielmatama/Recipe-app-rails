@@ -1,0 +1,30 @@
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+}
+
+.field {
+  margin-bottom: 5%;
+}
+
+.border {
+  border: 2px solid black;
+  width: 70vw;
+  display: flex;
+  flex-direction: row;
+  justify-self: center;
+  margin: 2% auto;
+}
+
+.description {
+  flex: 3;
+  margin-left: 10vw;
+  padding: 1%;
+  text-align: justify;
+}
+
+.recipe {
+  padding: 1%;
+}

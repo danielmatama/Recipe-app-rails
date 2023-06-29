@@ -1,7 +1,6 @@
 class RecipesController < ApplicationController
   before_action :set_recipe, only: %i[show edit update destroy]
 
-  # GET /recipes or /recipes.json
   def index
     @recipes = current_user.recipes
   end
@@ -15,8 +14,7 @@ class RecipesController < ApplicationController
 
     @recipe = Recipe.find(params[:id])
     @recipe_foods = RecipeFood.where(recipe_id: @recipe.id).includes(:food, :recipe)
-  end
-
+    
   def new
     @recipe = Recipe.new
   end
@@ -42,18 +40,15 @@ class RecipesController < ApplicationController
       render :new
     end
   end
-
   def public_recipes
     @public_recipes = Recipe.where(public: true).includes([:recipe_foods], [:foods])
   end
-
   private
 
   def set_recipe
     @recipe = Recipe.find(params[:id])
   end
-
   def recipe_params
-    params.require(:recipe).permit(:name, :description, :user_id, :preparation_time, :cooking_time, :public)
+    params.require(:recipe).permit(:name, :preparation_time, :cooking_time, :description, :public)
   end
 end
