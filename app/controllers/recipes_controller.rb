@@ -14,7 +14,8 @@ class RecipesController < ApplicationController
 
     @recipe = Recipe.find(params[:id])
     @recipe_foods = RecipeFood.where(recipe_id: @recipe.id).includes(:food, :recipe)
-    
+  end
+
   def new
     @recipe = Recipe.new
   end
@@ -34,20 +35,23 @@ class RecipesController < ApplicationController
     @user = User.find(params[:user_id])
     @recipe = Recipe.find(params[:id])
     if @recipe.destroy
-      redirect_to users_path, notice: 'Recipe created successfully!'
+      redirect_to users_path, notice: 'Recipe deleted successfully!'
     else
       puts @recipe.errors.full_messages
       render :new
     end
   end
+
   def public_recipes
     @public_recipes = Recipe.where(public: true).includes([:recipe_foods], [:foods])
   end
+
   private
 
   def set_recipe
     @recipe = Recipe.find(params[:id])
   end
+
   def recipe_params
     params.require(:recipe).permit(:name, :preparation_time, :cooking_time, :description, :public)
   end
