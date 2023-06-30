@@ -1,5 +1,6 @@
+<%= render 'shared/navigation' %>
+<div class ="form">
 <%= form_with(model: @recipe, url: user_recipes_path) do |form| %>
-    <div class="container">
       <%= form.label :name %>
       <%= form.text_field :name %>
       <%= form.label :preparation_time %>
@@ -11,5 +12,5 @@
       <%= form.label :public %>
       <%= form.select :public, [['Yes', true], ['No', false]], include_blank: true %>
       <%= form.submit 'Submit' %>
-    </div>
   <% end %>
+  </div>

@@ -1,9 +1,11 @@
 class FoodsController < ApplicationController
   def index
+    @user = current_user
     @food = Food.includes(:user).where(user_id: current_user.id)
   end
 
   def new
+    @user = current_user
     @food = Food.new
   end
 
@@ -20,6 +22,9 @@ class FoodsController < ApplicationController
   end
 
   def destroy
+    @food = Food.find(params[:id])
+    @recipe_food = @food.recipe_foods.where(food_id: @food.id)
+    @recipe_food.each(&:destroy)
     @food.destroy
     respond_to do |format|
       format.html { redirect_to foods_url, notice: 'Food was successfully destroyed.' }
@@ -33,6 +38,6 @@ class FoodsController < ApplicationController
   end
 
   def food_params
-    params.require(:food).permit(:name, :measurement_unit, :price)
+    params.require(:food).permit(:name, :measurement_unit, :quantity, :price)
   end
 end
