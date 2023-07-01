@@ -26,7 +26,7 @@ class RecipesController < ApplicationController
     @user = User.find(params[:user_id])
     @recipe = @user.recipes.new(recipe_params)
     if @recipe.save
-      redirect_to users_path, notice: 'Recipe created successfully!'
+      redirect_to user_recipes_path, notice: 'Recipe created successfully!'
     else
       puts @recipe.errors.full_messages
       render :new
@@ -39,9 +39,9 @@ class RecipesController < ApplicationController
     @recipe_food = @recipe.recipe_foods.where(recipe_id: @recipe.id)
     @recipe_food.each(&:destroy)
     if @recipe.destroy
-      redirect_to users_path, notice: 'Recipe deleted successfully!'
+      redirect_to user_recipes_path, notice: 'Recipe deleted successfully!'
     else
-      puts @recipe.errors.full_messages
+      flash[:notice] = 'Something went wrong, Try again!'
       render :new
     end
   end

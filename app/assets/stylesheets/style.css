@@ -204,3 +204,12 @@ li > button {
   width: 30%;
   margin-bottom: 3%;
 }
+
+.welcome-heading {
+  margin: 4% auto;
+  background-color: transparent;
+  border: none;
+  font-size: 3vw;
+  font-weight: 700;
+  width: 50vw;
+}

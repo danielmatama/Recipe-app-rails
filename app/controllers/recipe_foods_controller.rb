@@ -10,11 +10,10 @@ class RecipeFoodsController < ApplicationController
     @user = current_user
     @recipe = Recipe.find(params[:recipe_id])
     @recipe_food = @recipe.recipe_foods.build(recipe_food_params)
-
+    @foods = Food.all
     if @recipe_food.save
       redirect_to users_path, notice: 'Recipe created successfully!'
     else
-      flash[:alert] = 'Something went wrong, Try again!'
       render :new
     end
   end
