@@ -1,10 +1,10 @@
 <%= render 'shared/navigation' %>
+<div class ="form">
 <%= form_with(model: @recipe_food, url: user_recipe_recipe_foods_path(user_id: @user.id, recipe_id: @recipe.id)) do |form| %>
-    <div class="container">
+   <%= form.label :food %>
+      <%= form.collection_select :food_id, @foods, :id, :name, { include_blank: true }, { data: { measurement_unit: :measurement_unit, price: :price } } %>
       <%= form.label :quantity %>
       <%= form.text_field :quantity %>
-      <%= form.collection_select :food_id, @foods, :id, :name, { include_blank: true }, { data: { measurement_unit: :measurement_unit, price: :price } } %>
-
-      <%= form.submit 'Submit' %>
-    </div>
+      <%= form.submit 'Add ingredient' %>
   <% end %>
+  </div>

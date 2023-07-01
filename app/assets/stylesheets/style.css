@@ -183,3 +183,24 @@ li > button {
   font-weight: 800;
   margin-bottom: 2%;
 }
+
+.shopping-list-heading {
+  margin: 4% auto;
+  background-color: transparent;
+  border: none;
+  font-size: 3vw;
+  font-weight: 700;
+  width: 25vw;
+}
+
+.display {
+  display: flex;
+}
+
+.total-amount {
+  margin-left: 10%;
+  font-size: 1.5vw;
+  font-weight: 400;
+  width: 30%;
+  margin-bottom: 3%;
+}

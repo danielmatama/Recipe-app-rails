@@ -1,23 +1,23 @@
 <%= render 'shared/navigation' %>
 <div class = "home">
-<h2 class="recipe-heading">Recipe: <%= @recipe.id %> </h2>
+      <h2 class="recipe-heading">Recipe: <%= @recipe.id %> </h2>
 <div class = "details-layout">
-<div class="recipe-details">
-  <h3>Preparation time: <%= @recipe.preparation_time %> hours</h3>
-  <h3>Cooking time: <%= @recipe.cooking_time %> hours</h3>
-  <p><%= @recipe.description %></p>
-</div>
-<div class="toggle"><h2>Public  
-<%= form_with(model: @recipe, url: user_recipes_path, class: "inline") do |form| %>
-  <label class="relative inline-flex items-center cursor-pointer">
-  <%= form.check_box :enabled, checked: form.object.public, class: "sr-only peer" %>
-    <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
-  </label>
-<% end %>
-</div>
+      <div class="recipe-details">
+          <h3>Preparation time: <%= @recipe.preparation_time %> hours</h3>
+          <h3>Cooking time: <%= @recipe.cooking_time %> hours</h3>
+          <p><%= @recipe.description %></p>
+      </div>
+      <div class="toggle"><h2>Public  
+      <%= form_with(model: @recipe, url: user_recipes_path, class: "inline") do |form| %>
+          <label class="relative inline-flex items-center cursor-pointer">
+          <%= form.check_box :enabled, checked: form.object.public, class: "sr-only peer" %>
+            <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+          </label>
+      <% end %>
+      </div>
 </div>
 <div class= "button-layout">
-<button class ="shopping-list">Generate Shopping list</button>
+<button class ="shopping-list"><%= link_to "Generate Shopping List", user_recipe_shopping_lists_path(user_id: @user.id, recipe_id: @recipe.id, id: @recipe.id) %></button>
 <button class ="add"><%= link_to "Add Ingredient", new_user_recipe_recipe_food_path(user_id: @user.id, recipe_id: @recipe.id) %></button>
 </div>
 <hr>
@@ -33,12 +33,12 @@
 </thead>
 <tbody>
 <% @recipe_foods.each do |recipefood| %>
-    <tr>
-    <th><p> <%= recipefood.food.name%> </p></th>
-    <th><p> <%= recipefood.quantity%>  <%= recipefood.food.measurement_unit %> </p></th>
-    <th><p> $ <%= recipefood.quantity * recipefood.food.price%> </p></th>
-    <th><p><%= link_to "Delete", user_recipe_recipe_food_path(user_id: current_user, recipe_id: @recipe, id: recipefood), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %></p></th>
-    </tr>
+  <tr>
+  <th><p> <%= recipefood.food.name%> </p></th>
+  <th><p> <%= recipefood.quantity%>  <%= recipefood.food.measurement_unit %> </p></th>
+  <th><p> $ <%= recipefood.quantity * recipefood.food.price%> </p></th>
+  <th><p><%= link_to "Delete", user_recipe_recipe_food_path(user_id: current_user, recipe_id: @recipe, id: recipefood), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %></p></th>
+  </tr>
 <% end %>
 </tbody>
 </table>

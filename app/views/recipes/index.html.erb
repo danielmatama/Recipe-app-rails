@@ -1,5 +1,5 @@
-<%= render 'shared/navigation' %>
-<% @recipes.each do |recipe| %>
+    <%= render 'shared/navigation' %>
+    <% @recipes.each do |recipe| %>
     <%= link_to user_recipe_path(user_id: @user.id, recipe: recipe, id: recipe.id) do %>
     <div class ="border">
     <div class="recipe"> 
@@ -12,4 +12,4 @@
     </div>
     <%end%>
     <%end%>
-<%= link_to "New Recipe", new_user_recipe_path(user_id: @user.id), class:"new-recipe" %>
+    <%= link_to "New Recipe", new_user_recipe_path(user_id: @user.id), class:"new-recipe" %>

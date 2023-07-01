@@ -14,7 +14,7 @@ class RecipeFoodsController < ApplicationController
     if @recipe_food.save
       redirect_to users_path, notice: 'Recipe created successfully!'
     else
-      puts @recipe_food.errors.full_messages
+      flash[:alert] = 'Something went wrong, Try again!'
       render :new
     end
   end
