@@ -1,4 +1,5 @@
 class ShoppingListsController < ApplicationController
+  skip_load_and_authorize_resource
   def index
     @user = current_user
     @recipes = @user.recipes.includes(recipe_foods: :food)
