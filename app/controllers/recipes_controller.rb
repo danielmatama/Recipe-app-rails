@@ -1,8 +1,9 @@
 class RecipesController < ApplicationController
-  before_action :set_recipe, only: %i[show edit update destroy]
+  # before_action :set_recipe, only: %i[show edit update destroy]
 
   def index
-    @recipes = current_user.recipes
+    @user = current_user
+    @recipes = @user.recipes
   end
 
   def show
@@ -11,12 +12,13 @@ class RecipesController < ApplicationController
       flash[:alert] = 'You do not have access to see details.'
       return redirect_to recipes_path
     end
-
+    @user = current_user
     @recipe = Recipe.find(params[:id])
-    @recipe_foods = RecipeFood.where(recipe_id: @recipe.id).includes(:food, :recipe)
+    @recipe_foods = @recipe.recipe_foods.includes(:food)
   end
 
   def new
+    @user = current_user
     @recipe = Recipe.new
   end
 
@@ -24,7 +26,7 @@ class RecipesController < ApplicationController
     @user = User.find(params[:user_id])
     @recipe = @user.recipes.new(recipe_params)
     if @recipe.save
-      redirect_to users_path, notice: 'Recipe created successfully!'
+      redirect_to user_recipes_path, notice: 'Recipe created successfully!'
     else
       puts @recipe.errors.full_messages
       render :new
@@ -34,15 +36,18 @@ class RecipesController < ApplicationController
   def destroy
     @user = User.find(params[:user_id])
     @recipe = Recipe.find(params[:id])
+    @recipe_food = @recipe.recipe_foods.where(recipe_id: @recipe.id)
+    @recipe_food.each(&:destroy)
     if @recipe.destroy
-      redirect_to users_path, notice: 'Recipe deleted successfully!'
+      redirect_to user_recipes_path, notice: 'Recipe deleted successfully!'
     else
-      puts @recipe.errors.full_messages
+      flash[:notice] = 'Something went wrong, Try again!'
       render :new
     end
   end
 
   def public_recipes
+    @user = current_user
     @public_recipes = Recipe.where(public: true).includes([:recipe_foods], [:foods])
   end
 

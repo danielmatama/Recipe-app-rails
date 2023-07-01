@@ -28,3 +28,188 @@
 .recipe {
   padding: 1%;
 }
+
+.home {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.details-layout {
+  display: flex;
+  width: 90%;
+  margin: 2% auto;
+}
+
+.recipe-details {
+  flex: 2;
+}
+
+.toggle {
+  flex: 1;
+  padding-left: 5%;
+}
+
+.recipe-heading {
+  align-self: center;
+  font-size: 2vw;
+  font-weight: 600;
+  margin-top: 2%;
+}
+
+.recipe-details > h3 {
+  font-size: 1.3vw;
+  font-weight: 500;
+  margin: 3% auto;
+}
+
+.recipe-details > p {
+  text-align: justify;
+}
+
+table {
+  width: 60vw;
+  margin: auto;
+}
+
+thead {
+  background-color: rgb(141, 141, 143);
+}
+
+th {
+  border: 1px solid #900;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: rgb(212, 212, 212);
+}
+
+li > a {
+  color: blue;
+  width: 100%;
+}
+
+.add > a {
+  width: 100%;
+}
+
+.button-layout {
+  display: flex;
+  width: 90%;
+  margin: auto;
+}
+
+.add {
+  width: 15vw;
+  margin-left: 30%;
+  border: solid 2px black;
+  background-color: rgb(233, 230, 230);
+  padding: 0.5%;
+  margin-top: 2%;
+  margin-bottom: 1%;
+}
+
+.shopping-list {
+  border: solid 2px black;
+  background-color: rgb(233, 230, 230);
+  padding: 0.5%;
+  margin-top: 2%;
+  margin-bottom: 1%;
+  width: 30vw;
+}
+
+hr {
+  width: 90%;
+  margin: auto;
+  border: 1px solid black;
+  margin-bottom: 3%;
+}
+
+nav {
+  width: 90%;
+  border: 2px solid black;
+  margin: 2% auto;
+}
+
+ul {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+button {
+  color: blue;
+}
+
+li > button {
+  color: blue;
+  width: 100%;
+}
+
+.add.push {
+  margin-left: 70%;
+  margin-bottom: 5%;
+}
+
+.form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 5%;
+}
+
+.form > form {
+  display: flex;
+  flex-direction: column;
+}
+
+.new-recipe {
+  color: blue;
+  margin-left: 45%;
+}
+
+.public-recipe {
+  width: 60%;
+  padding: 2%;
+}
+
+.public-details {
+  padding: 2%;
+}
+
+.heading {
+  font-size: 2vw;
+  font-weight: 800;
+  margin-bottom: 2%;
+}
+
+.shopping-list-heading {
+  margin: 4% auto;
+  background-color: transparent;
+  border: none;
+  font-size: 3vw;
+  font-weight: 700;
+  width: 25vw;
+}
+
+.display {
+  display: flex;
+}
+
+.total-amount {
+  margin-left: 10%;
+  font-size: 1.5vw;
+  font-weight: 400;
+  width: 30%;
+  margin-bottom: 3%;
+}
+
+.welcome-heading {
+  margin: 4% auto;
+  background-color: transparent;
+  border: none;
+  font-size: 3vw;
+  font-weight: 700;
+  width: 50vw;
+}

@@ -1,0 +1,12 @@
+    <h2 class="add-food-title">Modify Ingedrient</h2>
+
+    <%= form_with(model: @recipe_food, url: user_recipe_recipe_food_path(user_id: @user.id, recipe_id: @recipe_food, id: @recipe_food), method: :patch) do |f| %>
+
+
+    <%= f.label :food_name %>
+    <%= f.collection_select :food_id, @foods, :id, :name, { include_blank: true, selected: @food.name }, { data: { measurement_unit: :measurement_unit, price: :price } } %>
+
+    <%= f.label :quantity %>
+    <%= f.number_field :quantity %>
+    <%= f.submit "Update Recipe Food" %>
+    <% end %>

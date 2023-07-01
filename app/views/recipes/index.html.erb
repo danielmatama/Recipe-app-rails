@@ -1,11 +1,15 @@
-<% @recipes.each do |recipe| %>
+    <%= render 'shared/navigation' %>
+    <% @recipes.each do |recipe| %>
+    <%= link_to user_recipe_path(user_id: @user.id, recipe: recipe, id: recipe.id) do %>
     <div class ="border">
     <div class="recipe"> 
-    <h2>Recipe:<%= recipe.id%> </h2>
+    <h2>Recipe:<%= recipe.name%> </h2>
     <%= link_to "Remove", user_recipe_path(recipe.user, recipe), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
     </div>
     <div class="description">
     <p><%= recipe.description%></p>
     </div>
     </div>
-<%end%>
+    <%end%>
+    <%end%>
+    <%= link_to "New Recipe", new_user_recipe_path(user_id: @user.id), class:"new-recipe" %>

@@ -1,0 +1,8 @@
+<nav class ="nav"> 
+<ul>
+<li><%= link_to "Public Recipe List", public_recipes_path(user_id: @user) %></li>
+<li><%= link_to "Recipe List", user_recipes_path(user_id: @user) %></li>
+<li><%= link_to "Food List", user_foods_path(user_id: @user) %></li>
+<li><%= button_to "Sign out", destroy_user_session_path, method: :delete  %></li>
+</ul>
+</nav>
