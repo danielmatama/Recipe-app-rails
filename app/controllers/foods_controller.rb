@@ -25,9 +25,14 @@ class FoodsController < ApplicationController
     @food = Food.find(params[:id])
     @recipe_food = @food.recipe_foods.where(food_id: @food.id)
     @recipe_food.each(&:destroy)
-    @food.destroy
-    respond_to do |format|
-      format.html { redirect_to foods_url, notice: 'Food was successfully destroyed.' }
+    if @food.destroy
+      respond_to do |format|
+        format.html { redirect_to user_foods_url, notice: 'Food was successfully destroyed.' }
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to user_foods_url, notice: 'Food was not destroyed.' }
+      end
     end
   end
 

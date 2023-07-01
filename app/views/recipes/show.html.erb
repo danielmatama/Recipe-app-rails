@@ -16,10 +16,12 @@
       <% end %>
       </div>
 </div>
+<%if can? :manage, @recipe%>
 <div class= "button-layout">
 <button class ="shopping-list"><%= link_to "Generate Shopping List", user_recipe_shopping_lists_path(user_id: @user.id, recipe_id: @recipe.id, id: @recipe.id) %></button>
 <button class ="add"><%= link_to "Add Ingredient", new_user_recipe_recipe_food_path(user_id: @user.id, recipe_id: @recipe.id) %></button>
 </div>
+<% end %>
 <hr>
 <div>
 <table>
@@ -28,7 +30,9 @@
 <th>Food</th>
 <th>Quantity</th>
 <th>Value</th>
+<%if can? :manage, @recipe%>
 <th >Action</th>
+<% end %>
 </tr>
 </thead>
 <tbody>
@@ -37,7 +41,9 @@
   <th><p> <%= recipefood.food.name%> </p></th>
   <th><p> <%= recipefood.quantity%>  <%= recipefood.food.measurement_unit %> </p></th>
   <th><p> $ <%= recipefood.quantity * recipefood.food.price%> </p></th>
+  <%if can? :manage, @recipe%>
   <th><p><%= link_to "Delete", user_recipe_recipe_food_path(user_id: current_user, recipe_id: @recipe, id: recipefood), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %></p></th>
+<% end %>
   </tr>
 <% end %>
 </tbody>

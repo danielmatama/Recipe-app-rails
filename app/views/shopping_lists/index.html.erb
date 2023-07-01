@@ -1,6 +1,9 @@
 <%= render 'shared/navigation' %>
     <h1 class= "shopping-list-heading">Shopping List</h1>
-      <div class="display">  
+      <div class="display"> 
+      <% if @total_price == 0 %>
+        <p class ="total-amount">List is empty or You have enough food item in your General Food list to make this recipe </p>
+        <% else %>
       <p class="total-amount">Amount of food item to buy: $<%= @total_price %></p> <p class="total-amount">Total value of food needed:<%= @total_items %></p>
     </div>
     <table>
@@ -23,3 +26,4 @@
       <% end %>
     </tbody>
     </table>
+    <% end %>

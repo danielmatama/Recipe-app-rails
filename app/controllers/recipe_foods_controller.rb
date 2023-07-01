@@ -12,7 +12,7 @@ class RecipeFoodsController < ApplicationController
     @recipe_food = @recipe.recipe_foods.build(recipe_food_params)
     @foods = Food.all
     if @recipe_food.save
-      redirect_to users_path, notice: 'Recipe created successfully!'
+      redirect_to user_recipes_url, notice: 'Recipe was added successfully!'
     else
       render :new
     end
@@ -48,6 +48,11 @@ class RecipeFoodsController < ApplicationController
     @user = current_user
     @recipe = Recipe.find(params[:recipe_id])
     @recipe_food = @recipe.recipe_foods.find(params[:id])
-    @recipe_food.destroy
+    if @recipe_food.destroy.destroy
+      redirect_to user_recipe_path, notice: 'Recipe deleted successfully!'
+    else
+      flash[:notice] = 'Something went wrong, Try again!'
+      render :new
+    end
   end
 end
