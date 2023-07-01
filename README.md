@@ -1,3 +1,5 @@
+# Recipe Blog APP
+
 <a name="readme-top"></a>
 
 # 📗 Table of Contents
@@ -18,31 +20,22 @@
 - [🤝 Contributing](#contributing)
 - [⭐️ Show your support](#support)
 - [🙏 Acknowledgements](#acknowledgements)
-- [❓ FAQ (OPTIONAL)](#faq)
+- [❓ FAQ](#faq)
 - [📝 License](#license)
 
-<!-- PROJECT DESCRIPTION -->
 
-# 📖 Recipe App <a name="about-project"></a>
+# 📖 [Blog app] <a name="about-project"></a>
 
->.The Recipe app keeps track of all your recipes, ingredients, and inventory. It will allow you to save ingredients, keep track of what you have, create recipes, and generate a shopping list based on what you have and what you are missing from a recipe. Also, since sharing recipes is an important part of cooking the app should allow you to make them public so anyone can access them.
+**[Blog app]** This is a website that provides a wide variety of recipe for users. Users have access to add recipes, delete recipes, add food and deletes food. The app also allows user to know what is required in order to prepare a recipe
 
-## 🛠 Built With <a name= ruby, rails></a>
+## 🛠 Built With <a name="built-with"></a>
 
 ### Tech Stack <a name="tech-stack"></a>
 
-
 <details>
-  <summary>Client</summary>
+  <summary>Ruby on Rails</summary>
   <ul>
-    <li><a href="https://www.ruby-lang.org/en/">Ruby on rails</a></li>
-  </ul>
-</details>
-
-<details>
-<summary>Database</summary>
-  <ul>
-    <li><a href="https://www.postgresql.org/">PostgreSQL</a></li>
+    <li><a>https://rubyonrails.org/</a></li>
   </ul>
 </details>
 
@@ -50,70 +43,89 @@
 
 ### Key Features <a name="key-features"></a>
 
-- Built using Ruby on Rails
-- Used PostgreSQL database
+- **[Add Recipes]**
+- **[Add Foods]**
+- **[Chekout with Shopping List]**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- GETTING STARTED -->
 
 ## 💻 Getting Started <a name="getting-started"></a>
-
-> To start and run this project
-```
-bundle install
-```
-```
-ruby main.rb
-```
 
 To get a local copy up and running, follow these steps.
 
 ### Prerequisites
 
-- Text editor like Visual studio.
-- PostgreSQL
+In order to run this project you need:
 
-### Install & Setup
+- Install Ruby
+- Install Rails
+- Install Postgresql
 
-To setup and install this sample ROR Blog project, follow the below steps:
-- Clone this project by the command: 
+### Setup
 
-```
-$ git clone https://github.com/danielmatama/recipe-app-rails.git
-```
+Clone this repository to your desired folder:
 
-- Then switch to the project folder by the bellow query:
-
-```
-$ cd Blog-App
+```sh
+  cd recipe_blog_app
+  git clone https://github.com/danielmatama/Recipe-app-rails.git
 ```
 
-- Install the required dependecies with `bundle install`
-- Install npm dependencies with `npm install`
-- With Ruby on Rails and PostgreSQL installed in your environment, you can run `rails server` to run the website.
+### Install
 
-### Tests
+Install this project with:
 
-- Run `rspec`
+```sh
+  cd recipe_blog_app
+  bundle install
+```
+```sh
+  gem install rspec
+```
+```sh
+  gem install --no-document rubocop -v '>= 1.0, < 2.0' # https://docs.rubocop.org/en/stable/installation/
+```
+```sh
+  npm install --save-dev stylelint@13.x stylelint-scss@3.x stylelint-config-standard@21.x stylelint-csstree-validator@1.x
+```
+
+### Usage
+
+To run the project, execute the following command:
+
+```sh
+  rails server
+```
+
+### Run tests
+
+To run tests, run the following command:
+
+```sh
+  rubocop --color
+```
+```sh
+  npx stylelint "**/*.{css,scss}"
+```
+```sh
+  rspec
+```
 
 ### Deployment
 
-N/A
-
-<!--
-Example:
-
-```sh
-
-```
- -->
+  - [N/A]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- AUTHORS -->
+
 
 ## 👥 Authors <a name="authors"></a>
+
+👤 **Akande Abdulwasiu**
+
+- GitHub: [@Newtayo](https://github.com/Newtayo)
+- Twitter: [@Omortayoh](https://twitter.com/Omortayoh)
+- LinkedIn: [Akande Abdulwasiu](https://linkedin.com/in/AkandeAbdulwasiu)
 
 👤 **Daniel Matama**
 
@@ -123,38 +135,44 @@ Example:
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- FUTURE FEATURES -->
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- [ ] **Process data in models**
+- **[Modify Shopping List]**
+- **[Designation of Role]**
+- **[Better UI]**
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- CONTRIBUTING -->
+
 
 ## 🤝 Contributing <a name="contributing"></a>
 
+Contributions, issues, and feature requests are welcome!
+
+Feel free to check the [issues page](https://github.com/danielmatama/Recipe-app-rails/issues).
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- SUPPORT -->
 
 ## ⭐️ Show your support <a name="support"></a>
 
+If you like this project please show support by staring ⭐️.
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- ACKNOWLEDGEMENTS -->
+
 
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
 
-- I would like to thank Microverse.
+* We would like to thank Microverse and everyone who has contributed to this project
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- LICENSE -->
 
 ## 📝 License <a name="license"></a>
 
-This project is [MIT](./LICENSE) licensed.
+This project is [MIT](https://github.com/danielmatama/Recipe-app-rails/blob/development/LICENSE) licensed.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
