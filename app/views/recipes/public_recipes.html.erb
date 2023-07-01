@@ -1,0 +1,22 @@
+<%= render 'shared/navigation' %>
+  <h1>Public Recipes</h1>
+  <% @public_recipes.each do |recipe| %>
+    <div class ="border">
+      <div class ="public-recipe">
+        <%= link_to user_recipe_path(user_id: @user.id, recipe: recipe, id: recipe.id), class: "recipe-name" do %>
+          <h2 class ="heading"><%= recipe.name %></h2>
+        <% end %>
+        <p>
+          By: <%= User.find(recipe.user_id).name  %>
+        </p>
+      </div>
+      <div class="public-details">
+        <p>Total food items: <%= recipe.foods.length %></p>
+        <p>
+          Total cost: <%= recipe.foods.reduce(0) do |sum, food| %>
+            <% sum + (food.quantity * food.price)  %>
+          <% end %>
+        </p>
+      </div>
+    </div>
+  <% end %>

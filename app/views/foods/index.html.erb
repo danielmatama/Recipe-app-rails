@@ -1,0 +1,25 @@
+
+<%= render 'shared/navigation' %>
+<button class ="add push"><%= link_to "Add Food", new_user_food_path(user_id: @user.id) %></button>
+<table>
+<thead >
+<tr>
+<th>Name</th>
+<th>Quantity</th>
+<th>Measurement</th>
+<th>Price</th>
+<th >Action</th>
+</tr>
+</thead>
+<tbody>
+<% @food.each do |food| %>
+    <tr>
+    <th><p> <%= food.name%> </p></th>
+    <th><p> $ <%= food.quantity%> </p></th>
+    <th><p> <%= food.measurement_unit%></p></th>
+    <th><p> $ <%= food.price%> </p></th>
+    <th><p> <%= link_to "Delete",  user_food_path(food.user, food), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %></p></th>
+    </tr>
+<% end %>
+</tbody>
+</table>
